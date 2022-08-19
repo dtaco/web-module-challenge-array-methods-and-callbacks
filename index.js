@@ -102,9 +102,18 @@ Use the higher-order function getWinnersByYear to do the following:
 💡 HINT: the strings returned need to exactly match the string in step 4.
  */
 
-function getWinnersByYear(/* code here */) {
-    /* code here */
-}
+function getWinnersByYear(dataArray, finalsFunc, yearsFunc, winnersFunc) {
+    let finalsArray = finalsFunc(dataArray);
+    let yearsArray = yearsFunc(dataArray, finalsFunc);
+    let winnersArray = winnersFunc(dataArray, finalsFunc)
+    let stringArray = [];
+
+    for (let i = 0; i < finalsArray.length; i++) {
+        stringArray.push(`In ${yearsArray[i]}, ${winnersArray[i]} won the world cup!`)
+    }
+    return stringArray;
+    
+    }
 
 
 
