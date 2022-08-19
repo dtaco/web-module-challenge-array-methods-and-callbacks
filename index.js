@@ -112,7 +112,7 @@ function getWinnersByYear(dataArray, finalsFunc, yearsFunc, winnersFunc) {
         stringArray.push(`In ${yearsArray[i]}, ${winnersArray[i]} won the world cup!`)
     }
     return stringArray;
-    
+
     }
 
 
@@ -130,8 +130,25 @@ Use the higher order function getAverageGoals to do the following:
  
 */
 
-function getAverageGoals(/* code here */) {
-    /* code here */
+function getAverageGoals(cb) {
+    let workData = cb;  
+    let scoreArray = [];
+  
+    
+    workData.forEach(function (element,index) {
+      scoreArray.push(element["Home Team Goals"]);
+      scoreArray.push(element["Away Team Goals"]);
+    });
+   
+    
+    const sum = scoreArray.reduce((accumulator, value) => {
+      return accumulator + value;
+    }, 0);
+    
+    const finalNum = (sum/scoreArray.length)*2;
+    
+    return finalNum.toFixed(2)
+
  }
 
 
