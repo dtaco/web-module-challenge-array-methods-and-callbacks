@@ -55,8 +55,8 @@ Use the higher-order function called getYears to do the following:
 3. Return an array called years containing all of the years in the getFinals data set*/
 
 function getYears(array, cb) {
-    var cbRan = cb(array);
-    var finYears = [];
+    let cbRan = cb(array);
+    let finYears = [];
   
   cbRan.forEach((element, index) => {
     finYears.push(element["Year"])
@@ -74,8 +74,19 @@ Use the higher-order function getWinners to do the following:
 💡 HINT: Don't worry about ties for now (Please see the README file for info on ties for a stretch goal.)
 4. Returns the names of all winning countries in an array called `winners` */ 
 
-function getWinners(/* code here */) {
-    /* code here */
+function getWinners(array, cb) {
+    var cbRan = cb(array);
+    var winners = [];
+  cbRan.forEach((element, index) => {
+    
+    if (element['Home Team Goals'] > element['Away Team Goals']) { winners.push(element['Home Team Name'])};
+    
+    if (element['Away Team Goals'] > element['Home Team Goals']) { winners.push(element['Away Team Name'])};
+    
+    if (element['Away Team Goals'] === element['Home Team Goals']) { winners.push(element['Away Team Name'])};
+    
+  });
+  return winners;
 }
 
 
