@@ -9,6 +9,15 @@ Practice accessing data by console.log-ing the following pieces of data note.
 
 //(a) Home Team name for 2014 world cup final
 
+const home2014 = fifaData.filter((element) => {
+    let filteredArr = [];
+    if (element.Year === 2014) {
+        filteredArr.push(element['Home Team Name']);
+    }
+    return filteredArr;
+});
+
+console.log (home2014);
 //(b) Away Team name for 2014 world cup final
 
 //(c) Home Team goals for 2014 world cup final
@@ -26,8 +35,15 @@ Use getFinals to do the following:
 💡 HINT - you should be looking at the stage key inside of the objects
 */
 
-function getFinals(/* code here */) {
-    /* code here */
+function getFinals(array) {
+    let filteredByFinal = [];
+
+    array.forEach((element, index) => {
+        if (element["Stage"] === "Final") {
+            filteredByFinal.push(element)
+        }
+    });
+    return filteredByFinal;
  }
 
 
@@ -38,8 +54,14 @@ Use the higher-order function called getYears to do the following:
 2. Receive a callback function as the second parameter that will take getFinals from task 2 as an argument
 3. Return an array called years containing all of the years in the getFinals data set*/
 
-function getYears(/* code here */) {
-    /* code here */
+function getYears(array, cb) {
+    var cbRan = cb(array);
+    var finYears = [];
+  
+  cbRan.forEach((element, index) => {
+    finYears.push(element["Year"])
+  })
+  return finYears;
 }
 
 
